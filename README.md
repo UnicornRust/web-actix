@@ -1,6 +1,6 @@
 # Actix Web Server
 
-![主要的流程图](./docs/screenshot123_22112024_220519.jpg)
+![主要的流程图](./docs/actix-arch-123_22112024_220519.jpg)
 
 - `Actix-Http-Server` 实现了 Http 协议
 - `Actix-Http-Server` 内可以开启 `Actix-App`
@@ -29,7 +29,7 @@
 
 ## 错误处理
 
-- [错误处理](./docs/error-handle-123_24112024_213906.jpg)
+- ![错误处理](./docs/error-handle-123_24112024_213906.jpg)
 
 - 程序中产生的各种错误, 被转换为一个统一的自定义异常类型
 - 这个统一的自定义类型会转换为对用户友好的提示信息和状态码
