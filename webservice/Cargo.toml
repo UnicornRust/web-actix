@@ -13,6 +13,17 @@ actix-rt = "2.10.0"
 serde = { version = "1.0.188", features = ["derive"] }
 # 配合 serde 序列化时提供时间处理的能力
 chrono = { version = "0.4.26", features = ["serde"] }
+# 加载环境变量文件
+dotenv = "0.15.0"
+# 编译连接 postgres
+openssl = { version = "0.10.55", features = ["vendored"] }
+# 数据库操作
+sqlx = { version = "0.8.2", features = [
+  "runtime-tokio-rustls", 
+  "postgres", 
+  "macros",
+  "chrono",
+]}
 
 [[bin]]
 name = "server1"
