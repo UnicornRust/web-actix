@@ -9,6 +9,8 @@ default-run = "main"
 actix-web = "4.3.1"
 # 提供为 actix-web 异步运行时
 actix-rt = "2.10.0"
+# 提供跨域配置支持
+actix-cors = "0.7.0"
 # 提供 json 序列化
 serde = { version = "1.0.188", features = ["derive"] }
 # 配合 serde 序列化时提供时间处理的能力
