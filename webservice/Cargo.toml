@@ -2,7 +2,7 @@
 name = "webservice"
 version = "0.1.0"
 edition = "2021"
-default-run = "teacher-service"
+default-run = "main"
 
 [dependencies]
 # http 服务器
@@ -18,7 +18,7 @@ dotenv = "0.15.0"
 # 编译连接 postgres
 openssl = { version = "0.10.55", features = ["vendored"] }
 # 数据库操作
-sqlx = { version = "0.8.2", features = [
+sqlx = { version = "0.7.4", features = [
   "runtime-tokio-rustls", 
   "postgres", 
   "macros",
@@ -29,4 +29,4 @@ sqlx = { version = "0.8.2", features = [
 name = "server1"
 
 [[bin]]
-name = "teacher-service"
+name = "main"

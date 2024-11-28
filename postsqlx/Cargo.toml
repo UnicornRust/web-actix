@@ -10,7 +10,10 @@ dotenv = "0.15.0"
 openssl = {version = "0.10.52", features = ["vendored"]}
 serde = { version = "1.0.183", features = ["derive"] }
 chrono = { version = "0.4.24", features = ["serde"] }
-sqlx = { version = "0.8.2", features = [
-   "runtime-tokio-rustls", "postgres", "chrono", "macros",
+sqlx = { version = "0.7.4", features = [
+   "postgres", 
+   "runtime-tokio-rustls", 
+   "macros",
+   "chrono", 
 ]}
 

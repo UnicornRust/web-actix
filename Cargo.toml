@@ -1,6 +1,6 @@
 [workspace]
 
 members = [ 
-  "postsqlx",
+  "postsqlx", 
   "webservice",
 ]

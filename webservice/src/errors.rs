@@ -1,4 +1,4 @@
-use actix_web::{cookie::ParseError, error, http::StatusCode, HttpResponse, Result, body::BoxBody};
+use actix_web::{error, http::StatusCode, HttpResponse, body::BoxBody};
 use serde::Serialize;
 use sqlx::error::Error as SQLxError;
 use std::fmt::{self, Display};
@@ -8,6 +8,7 @@ pub enum AppError {
     DBError(String),
     ActixError(String),
     NotFound(String),
+    InvalidaValue(String),
 }
 
 #[derive(Debug, Serialize)]
@@ -30,6 +31,11 @@ impl AppError {
                 println!("Not Found error occurred: {:?}", e);
                 e.into()
             }
+            AppError::InvalidaValue(e) => {
+                println!("Invalide request param {:?}", e);
+                "Invalide request params".into()
+            }
+
         }
     }
 }
@@ -40,7 +46,8 @@ impl error::ResponseError for AppError {
         match self {
             AppError::DBError(_) => StatusCode::INTERNAL_SERVER_ERROR,
             AppError::ActixError(_) => StatusCode::INTERNAL_SERVER_ERROR,
-            AppError::NotFound(_) => StatusCode::NOT_FOUND
+            AppError::NotFound(_) => StatusCode::NOT_FOUND,
+            AppError::InvalidaValue(_) => StatusCode::BAD_REQUEST
         }
     }
 
@@ -54,7 +61,7 @@ impl error::ResponseError for AppError {
 
 impl Display for AppError {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "{}", self)
+        write!(f, "{}", self.error_response())
     }
 }
 
