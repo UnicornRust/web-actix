@@ -1,0 +1,9 @@
+
+.center {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  box-shadow: 0 0 20px #d0d0d0;
+  border-radius: 8px;
+}
+

@@ -7,4 +7,5 @@
 - [postsqlx](./postsqlx/README.md) 测试 sqlx 的使用
 - [webservice](./webservice/README.md) Actix Web Server 构建 restful api
 - [webapp](./webapp/README.md) Actix Web Server 构建服务端渲染的前端应用
+- [webassemble](../webassemble/README.md) web Assemble 构建应用
 
