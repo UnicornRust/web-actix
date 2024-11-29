@@ -1,0 +1,62 @@
+[package]
+name = "webwasm"
+version = "0.1.0"
+authors = ["ancion <ancion@github.com>"]
+edition = "2018"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+default = ["console_error_panic_hook"]
+
+
+#######################################################
+# 注意
+# 并非所有的 rust 中的 crate 都可以在 wasm 中使用
+#######################################################
+
+[dependencies]
+
+chrono = {version = "0.4.23", features = ["serde"]}
+serde = { version = "1.0.152", features = ["derive"] }
+serde_json = "1.0.93" 
+serde_derive = "1.0.152"
+# wasm 与 js 绑定相关
+wasm-bindgen = { version = "0.2.79", features = ["serde-serialize"]}
+# 异步代码相关
+wasm-bindgen-futures = "0.4.29"
+# js-sys 用于操作浏览器中的对象
+js-sys = "0.3.72"
+# 这里声明的在浏览器中的对象才可以在 Rust 中使用，否则都会在编译器中报错
+# 大部分浏览器中对象绑定都在 web-sys 中绑定了, 可以在 rust 中操作
+web-sys = { version = "0.3.72", features = [
+  "Headers",
+  "Request",
+  "RequestInit",
+  "RequestMode",
+  "Response",
+  "Window",
+  "Document",
+  "Element",
+  "HtmlElement",
+  "Node",
+  "console",
+  "Event",
+  "MouseEvent",
+  "HtmlButtonElement",
+  "Location"
+]}
+
+# The `console_error_panic_hook` crate provides better debugging of panics by
+# logging them with `console.error`. This is great for development, but requires
+# all the `std::fmt` and `std::panicking` infrastructure, so isn't great for
+# code size when deploying.
+console_error_panic_hook = { version = "0.1.7", optional = true }
+
+[dev-dependencies]
+wasm-bindgen-test = "0.3.34"
+
+[profile.release]
+# Tell `rustc` to optimize for small code size.
+opt-level = "s"

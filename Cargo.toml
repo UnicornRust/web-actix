@@ -2,6 +2,7 @@
 
 members = [ 
   "postsqlx", 
-  "webapp",
+  "webapp", 
+  "webwasm",
   "webservice",
 ]
